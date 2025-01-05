@@ -1,0 +1,55 @@
+spring:
+  mail:
+    host: smtp.example.com
+    port: 587
+    username: your-email@example.com
+    password: your-email-password
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 
+            client-secret: 
+            scope: profile, email
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+          provider:
+            google:
+              authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
+              token-uri: https://oauth2.googleapis.com/token
+              user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+              user-name-attribute: sub
+  application:
+    name: backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/E-Commerce
+    username: postgres
+    password: 
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 20000
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      max-lifetime: 1800000
+
+    logging:
+      level:
+        org.springframework: DEBUG
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+
+security:
+  jwt:
+    secret-key: erctfvgybh5464766587hD4wWLiP2kVG9Gyc+7o2QLME9kbxiXeMtJKeKFDc0Qk=867jrrdc5f43v6g6h56bj7erc67t6f87jr7d9c8fvgh56b4635jerctfvgybfvghbj
